@@ -1,5 +1,4 @@
 # Frogger Clone
-===============================
 
 This game is built with the HTML5 Canvas and JavaScript as the backend. This is a frogger clone I built to learn more about the Canvas and object-oriented JavaScript.
 
