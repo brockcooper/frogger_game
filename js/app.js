@@ -10,7 +10,7 @@ var Enemy = function(x, y) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -20,21 +20,21 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     this.calcNewPosition(dt);
     this.checkCollision();
-}
+};
 
 Enemy.prototype.calcNewPosition = function (dt) {
   // If the enemey gets to the other side of the screen 
   // then reset the position back to the start
-  points = returnPoints();
+  var points = returnPoints();
   if (this.x > 500) {
     this.x = -60;
     // Calc new starting speed in a specific range. 
-    // As points go up the faster, on average, they will go
+    // As points go up the faster, on average, the enemies will travel
     this.speed = getRandomInRange(this.minSpeed + points, this.maxSpeed + points);
   } else {
     this.x =  this.x + this.speed * dt;
-  };
-}
+  }
+};
 
 Enemy.prototype.checkCollision = function () {
   // Check to see if the player is on the say y axis as an enemy 
@@ -43,13 +43,13 @@ Enemy.prototype.checkCollision = function () {
     player.resetPosition();
     // Reduce points by 25 if player gets hit
     player.points -= 25;
-  };
-}
+  }
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Player class
 var Player = function() {
@@ -58,16 +58,16 @@ var Player = function() {
     this.sprite = 'images/char-boy.png';
     // Set new game to 0 points
     this.points = 0;
-}
+};
 Player.prototype.update = function(dt) {
     // Updates points scoreboard
     document.getElementsByClassName('scoreboard')[0].innerHTML = 'Points: ' + this.points;
-}
+};
 
 // Draw the enemy on the screen, required method for game
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Handles movement of player
 Player.prototype.handleInput = function(key) {
@@ -84,19 +84,19 @@ Player.prototype.handleInput = function(key) {
       this.y += verticalMove;
     } else if (key == 'up' && this.y - verticalMove <= -35){
       this.win();
-    };
-}
+    }
+};
 
 // if player touches water then add 50 points and move off screen
 Player.prototype.win = function() {
   this.points +=  50;
   this.resetPosition();
-}
+};
 
 Player.prototype.resetPosition = function() {
     this.y = 390;
     this.x = 200;
-}
+};
 
 
 // returns 0 or the real points, whichever is greater. 
@@ -105,13 +105,13 @@ var returnPoints = function() {
     var points = 0;
     if (player.points > 0){
       points = player.points;
-    };
+    }
     return points;
-}
+};
 
 var getRandomInRange = function (min, max) {
     return Math.random() * (max - min) + min;
-}
+};
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -130,8 +130,8 @@ document.addEventListener('keyup', function(e) {
 // Place the player object in a variable called player
 var allEnemies = [];
 
-for (i = 0; i < 3; i++) {
+for (var i = 0; i < 3; i++) {
   allEnemies.push(new Enemy(-60, 50 + 85 * i));
-};
+}
 
 var player = new Player();
