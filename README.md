@@ -1,6 +1,6 @@
-frontend-nanodegree-arcade-game
+# Frogger Clone
 ===============================
 
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
+This game is built with the HTML5 Canvas and JavaScript as the backend. This is a frogger clone I built to learn more about the Canvas and object-oriented JavaScript.
 
-for self-checking their submission.
+This game plays almost exactly like Frogger where you need to get past the moving objects to get to the water. When you get to the water your points will increase and as your points increase so will the speed of the enemies.
